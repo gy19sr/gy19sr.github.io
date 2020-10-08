@@ -54,25 +54,24 @@
 	    		<div class="row d-flex">
 	    			<div class="col-lg-8 px-md-5 py-5">
 	    				<div class="row pt-md-4">
-	    					<h1 class="mb-3">LeetCode #53 Maximum Subarray</h1>
-		            <p><b>The Objective:</b> find the contiguous subarray which has the largest sum and return its sum. </p>
+	    					<h1 class="mb-3">LeetCode #70 Climbing Stairs</h1>
+		            <p><b>The Objective:</b> You are climbing a staircase with N number of steps, each time you can climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
 					<p>
-		              <img src="images/53_brute.JPG" alt="" class="img-fluid">
+		              <img src="images/70_1.JPG" alt="" class="img-fluid">
 					</p>
-					<p> As with any code I write on Leetcode, I time myself and try to solve the problem quickly and go back after my first submission and think about some anlges to come from. 
-						in this case I followed the typical brute force methodes as could be seen above. While it's very ineffcient it can find the the correct solutions. When submitted to leetcode the answer
-					timed out, verifying my suspicions. </p>
-		            <h2 class="mb-3 mt-5">Improved Code Using Slicing </h2>
+					<p> This is a classic problem, a perfect example of why I love leetcode so much. I am pretty familar with this one so code above is the standard solution. But as per usual after the problem I went around digging for some 
+						youtube videos that discuss this problem or hit on Recursive Programming. </p>
+		            <h2 class="mb-3 mt-5">Recursive programming </h2>
 					<p>
-						<img src="images/53_best.JPG" alt="" class="img-fluid">
+						<img src="images/70_2.JPG" alt="" class="img-fluid">
 					</p>
-					<p>Once I reviewed my code i realised an immediate mistake and that was not taking advantage of subarray slicing.
-						Another thought was to set a current max to use and only if a subarray increases that max could it replace it.
-						These two in combination provided a successful submission. </p>
+					<p>Recursion in Computer Science is the concept that a problem can be solved from smaller solutions. Kind of like using tree branches to slowly get to the trunk. The above image shows the tree like shape of the code. The only issue is there's a slight ineffciency when it comes to effciency. As can be seen highlighted in red to find new_ways(4) you need to calculate nw(2) twice. 
+						The solution is to do as I did in my own code using the bottem up approach. This means instead of needing all the elements in the tree you just need the last two to determine the next value.   </p>
 
 					<h2 class="mb-3 mt-5">Lessons Learned:</h2>
-					<p>I have the habit of trying to brute force my way through problems. I need to start by thinking about problems beyond just the typical quadratic format. 
-						Another remider is to take advantage of python sub array slicing. So After this answer I did a little review of how and when to use it.
+					<p>This was a great refresher on A core concepts in programming.
+						<b>Dynamic Progamming</b>. As much as a hate to admit it I often brute force my way to a solution first, but this was a case where I was familiar with the concept of the problem and just did a quick refresher on recursive/dynamic python script to figure it out.
+
 					</p>
 
 
