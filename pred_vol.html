@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Stuart Ross</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+	<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li class="colorlib-active"><a href="projects.html">Projects</a></li>
+					<li><a href="other.html">Other Work</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+
+			<div class="colorlib-footer">
+				<h1 id="colorlib-logo" class="mb-4"><a href="index.html" style="background-image: url(images/bg_1.jpg);">Stuart <span>Ross</span></a></h1>
+				<a href="https://github.com/gy19sr">  View<b> GitHub </b> Page </a>
+			</div>
+		</aside> <!-- END COLORLIB-ASIDE -->
+		<div id="colorlib-main">
+			<section class="ftco-section ftco-no-pt ftco-no-pb">
+	    	<div class="container">
+	    		<div class="row d-flex">
+	    			<div class="col-lg-8 px-md-5 py-5">
+	    				<div class="row pt-md-4">
+	    					<h1 class="mb-3">Volcanic Eruption Prediction</h1>
+		            <p>Kaggle Competition: Volcanic Eruption Prediction, National Institute of Geophysics and and Volcanology</p>
+		            <p>
+		              <img src="images/volcano.JPG" alt="" class="img-fluid">
+					</p>
+					<h2 class="mb-3 mt-5">#1. The Challange</h2>
+		            <p>As part of my current Data Science Internship, I am given 1 day a week to focus on 'skill development'. So between today and one day next week I'll be tackling this Kaggle problem. My objective
+						is just to refresh myself on all the steps of the data science process, I am not overly fixated on producing the highest performing model (this time). I'll also try and take some time and see what other people have done,
+						and learn from their steps in the process. Hopefully this will both help me practice and develop new skills.
+						I chose this specific challange as it was new and seemed fairly straight forward at first glance.
+					</p>
+					<p>
+						The task is to predict in exactly how many seconds a volcano is going to erupt. You are given many site (volcano) ID's and sensor values for each site.
+						Each site has a known eruption time and I believe the sensors reflect tremours in the ground prior to eruption. 
+					</p>
+		            <h2 class="mb-3 mt-5">#2. Looking at the data</h2>
+		            <p>The first hurdle is filling type, but it's a common one in the world of data science. Rather than your data being neatly given in a single csv dataframe,
+						each volcano has its own csv with the ten senors as the ten rows. There's another csv for the id's and eruption times. To get over this hurdle, It's as simple
+						as using the glob funtion and a for loop. 
+					 </p>
+		            <p>
+		              <img src="images/glob.JPG" alt="" class="img-fluid">
+					</p>
+					<p>Now run it through the for loop and creat sets for tehe desired features. </p>
+					<p>
+						<img src="images/Glob2.JPG" alt="" class="img-fluid">
+					</p>
+					<p>After that we can see see interesting summaries of the data like: how many of each sensor type are missing across all sites? </p>
+					<p>
+						<img src="images/missing_sensors.JPG" alt="" class="img-fluid">
+					</p>
+					<p> And a quick look at what a sites sensors might look like...</p>
+					<p>
+						<img src="images/sensor_values.JPG" alt="" class="img-fluid">
+					</p>
+					<p>Since it seemed to be fairly common that A site would be missing a sensor, I wanted to factor it in to my analysis. Now that I have a column to represent missing sensors.
+						I did a quick check for na's within a few of the dfs and they seem to be exceptionally rare, so for now I will just fill with zero. this could be something that is relooked 
+						at latter, in terms of improving the model. Now what I'm going to do is gather descriptive date for each sensor and I'll use that for the variables of my model... but for now I 
+					still need to do some of my daily work and probably a couple of Leetcode questions to keep my skills sharp. I'll revisit this next week! </p>
+
+		            <div class="tag-widget post-tag-container mb-5 mt-5">
+		              <div class="tagcloud">
+						<a href="kaggle.html" class="tag-cloud-link">Kaggle</a>
+
+		              </div>
+		            </div>
+		            
+		            <div class="about-author d-flex p-4 bg-light">
+		              <div class="bio mr-5">
+		                <img src="images/about.JPG" alt="Image placeholder" class="img-fluid mb-4">
+		              </div>
+		              <div class="desc">
+		                <h3>Stuart Ross</h3>
+		                <p>A Data Science Intern at Leeds Institute of Data Analytics. This was completed in my spare time as an independent learning oppertunity... and honestly just for a bit of fun too.</p>
+		              </div>
+		            </div>
+
+
+		            
+			    		</div><!-- END-->
+			    	</div>
+	    			
+	    		</div>
+	    	</div>
+	    </section>
+		</div><!-- END COLORLIB-MAIN -->
+	</div><!-- END COLORLIB-PAGE -->
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
