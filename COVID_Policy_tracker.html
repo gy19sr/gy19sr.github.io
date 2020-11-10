@@ -54,21 +54,70 @@
 	    		<div class="row d-flex">
 	    			<div class="col-lg-8 px-md-5 py-5">
 	    				<div class="row pt-md-4">
-	    					<h1 class="mb-3">A Loving Heart is the Truest Wisdom</h1>
-		            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
+	    					<h1 class="mb-3">Gradient Boosted Model to Predict COVID Cases in the UK to determine key Policies</h1>
 		            <p>
-		              <img src="images/Marine_1.jpg" alt="" class="img-fluid">
-		            </p>
-		            <p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-		            <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2>
-		            <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
+
+						The point of these Notebooks is to see the impact that UK policies have had on future COVID rates. 
+						I developed a Spreadsheet of key policy events from multiple sources and used that in combination with 
+						covid case rate to determine number of cases two weeks in the future. While the model could be drastically 
+						improved with further parameter tuning and inclusion of additional 
+						key features (like weather), the model uncovered three key policy categories that impact COVID rates.
+					</p>
+
+					<p>
+						The model code can be found in <a href="https://github.com/gy19sr/COVID_Analysis/blob/main/XG%20Boost%20Model.ipynb">XG Boost Model.ipynb </a> , and subsequent analysis 
+						of the policy tracker can be found at <a href="https://github.com/gy19sr/COVID_Analysis/blob/main/Policy%20analysis.ipynb">Policy Analysis.ipynb. </a>
+					</p>
+
 		            <p>
-		              <img src="images/Marine_1.jpg" alt="" class="img-fluid">
+		              <img src="images/Policy_tracker.JPG" alt="" class="img-fluid">
 		            </p>
-		            <p>Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus, quibusdam iste enim veniam, modi rem maiores.</p>
-		            <p>Odit voluptatibus, eveniet vel nihil cum ullam dolores laborum, quo velit commodi rerum eum quidem pariatur! Quia fuga iste tenetur, ipsa vel nisi in dolorum consequatur, veritatis porro explicabo soluta commodi libero voluptatem similique id quidem? Blanditiis voluptates aperiam non magni. Reprehenderit nobis odit inventore, quia laboriosam harum excepturi ea.</p>
-		            <p>Adipisci vero culpa, eius nobis soluta. Dolore, maxime ullam ipsam quidem, dolor distinctio similique asperiores voluptas enim, exercitationem ratione aut adipisci modi quod quibusdam iusto, voluptates beatae iure nemo itaque laborum. Consequuntur et pariatur totam fuga eligendi vero dolorum provident. Voluptatibus, veritatis. Beatae numquam nam ab voluptatibus culpa, tenetur recusandae!</p>
-		            <p>Voluptas dolores dignissimos dolorum temporibus, autem aliquam ducimus at officia adipisci quasi nemo a perspiciatis provident magni laboriosam repudiandae iure iusto commodi debitis est blanditiis alias laborum sint dolore. Dolores, iure, reprehenderit. Error provident, pariatur cupiditate soluta doloremque aut ratione. Harum voluptates mollitia illo minus praesentium, rerum ipsa debitis, inventore?</p>
+		            
+
+
+					<h2 class="mb-3 mt-5">#1. Data Prep</h2>
+
+		            <p>There were two primary data sources that contributed to this Model: </p>
+						<p>1. COVID-19 Case Rate data. This was provided directly from the NHS government website. It was far from a ready to
+							 use csv and required some quick changes in Excel before it could be brought into Python. </p> 
+						<p>2. The Policy Tracker data. This data provided every event/ move the government has taken in response to the COVID-19 efforts. </p> 
+						<p>COVID data was first imported and then grouped by date and Upper Tier Local Authority Area (UTLA). Case rate was then 
+							calculated relative to population for each UTLA. Then case rates two weeks in the future were attached. 
+							This will be our Y. As such, all features will relate to today, but what we’re predicting is two weeks in the future.  </p> 
+						<p>Policy Data was then incorporated and attached to differing categories. There values relate to how many of 
+							each type of policy occurred on a specific day.  </p>
+		            <p>
+		              <img src="images/COVID_Cat.JPG" alt="" class="img-fluid">
+					</p>
+					
+
+
+					<h2 class="mb-3 mt-5">#2. The Model</h2>
+					<p>The algorithm used is an xgboost, through the xgboost package. The point of the model would to 
+						see the f score of the variables and see if any category of policy was influential in predicting the number of cases.  </p>
+					
+					<p>The F Score shows that the top three most influential policy types were:</p>
+
+					<p><b>Social Distancing Measures / 
+					Testing, Tracing, and Surveillance /
+					Infection Prevention and Control </p></b>
+					
+					
+		            <p>
+		              <img src="images/COVID_fscore.JPG" alt="" class="img-fluid">
+					</p>
+
+					<p> A gradient boosting model was also run for secondary validation. There was little deviance between the test and train sets across 
+						boosting iterations. The Reg score was: 0.8545 and the RMSLE was 0.515. </p>
+
+					<p>
+						<img src="images/COVID_deviance.JPG" alt="" class="img-fluid">
+					</p>
+					
+					<p>These policies were then examined in more depth independently from this model <a href="https://github.com/gy19sr/COVID_Analysis/blob/main/Policy%20analysis.ipynb">here. </a></p>
+
+
+
 		            <div class="tag-widget post-tag-container mb-5 mt-5">
 		              <div class="tagcloud">
 						<a href="independent_projects.html" class="tag-cloud-link">Independent Porjects</a>
